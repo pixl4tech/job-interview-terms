@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "job-interview-terms"
+version = "0.1.0"
+description = ""
+authors = ["Dmitry Kolosov <52660454+pixl4tech@users.noreply.github.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+nltk = "^3.7"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
