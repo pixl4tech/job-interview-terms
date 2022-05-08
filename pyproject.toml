@@ -7,6 +7,8 @@ authors = ["Dmitry Kolosov <52660454+pixl4tech@users.noreply.github.com>"]
 [tool.poetry.dependencies]
 python = "^3.8"
 nltk = "^3.7"
+pandas = "^1.4.2"
+requests = "^2.27.1"
 
 [tool.poetry.dev-dependencies]
 
