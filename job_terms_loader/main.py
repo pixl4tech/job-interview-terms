@@ -4,7 +4,7 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.probability import FreqDist
 import re
-import csv, json
+import json
 from nltk.stem import WordNetLemmatizer
 import pandas as pd
 import config

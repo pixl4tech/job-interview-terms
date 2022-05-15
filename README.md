@@ -1,12 +1,8 @@
-# job-interview-terms
-### prerequisites
-Firstly, install dependency using poetry:  
-`poetry install`
+# job-interview-terms  
 
-After that, you need to download **nltk data** manually, using commands:  
-`python -m nltk.downloader 'punkt'`  
-`python -m nltk.downloader 'stopwords`  
-
-Finally, run `main.py` module.
-
- 
+## Loader terms  
+to do desc ...
+## Backend app  
+to do desc ...
+## Frontend app   
+to do desc ...
