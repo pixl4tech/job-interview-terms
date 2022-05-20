@@ -23,6 +23,9 @@ async def list_terms():
 async def show_random_term():
     if term_cursor := db["term"].aggregate([{"$sample": {"size": 1}}]):
         async for term in term_cursor:
+            db.term.update_one(
+                {'name': term["name"]},
+                {"$inc": {'views': 1}})
             return term
 
     raise HTTPException(status_code=404, detail=f"Term not found")
@@ -33,6 +36,9 @@ async def show_random_term():
 )
 async def show_term(name: str):
     if (term := await db["term"].find_one({"name": name})) is not None:
+        db.term.update_one(
+            {'name': name},
+            {"$inc": {'views': 1}})
         return term
 
     raise HTTPException(status_code=404, detail=f"Term '{name}' not found")
@@ -45,10 +51,10 @@ async def like_term(name: str):
     if (await db["term"].find_one({"name": name})) is not None:
         await db.term.update_one(
                 {'name': name},
-                {"$inc": {'likeCounter': 1}})
+                {"$inc": {'like': 1}})
 
         like_counter = await db["term"].find_one({"name": name})
-        return {"likeCounter": like_counter["likeCounter"]}
+        return {"like": like_counter["like"]}
 
     raise HTTPException(status_code=404, detail=f"Term '{name}' not found")
 
@@ -56,13 +62,13 @@ async def like_term(name: str):
 @term_router.patch(
     "/{name}/dislike", response_description="Dislike a term"
 )
-async def unlike_term(name: str):
+async def dislike_term(name: str):
     if (await db["term"].find_one({"name": name})) is not None:
         await db.term.update_one(
                 {'name': name},
-                {"$inc": {'dislikeCounter': 1}})
+                {"$inc": {'dislikes': 1}})
 
-        like_counter = await db["term"].find_one({"name": name})
-        return {"dislikeCounter": like_counter["dislikeCounter"]}
+        dislike_counter = await db["term"].find_one({"name": name})
+        return {"dislikes": dislike_counter["dislikes"]}
 
     raise HTTPException(status_code=404, detail=f"Term '{name}' not found")

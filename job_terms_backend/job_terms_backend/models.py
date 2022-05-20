@@ -35,8 +35,9 @@ class Dictionary(BaseModel):
 class Term(BaseModel):
     name: str
     dictionary: Dictionary
-    likeCounter: int
-    dislikeCounter: int
+    likes: int
+    dislikes: int
+    views: int
 
     class Config:
         arbitrary_types_allowed = True

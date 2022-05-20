@@ -8,7 +8,7 @@ with open("files/job_interview_terms_dict.json", 'r') as j:
 term_list = []
 for term in dictionary:
     term_name = term[list(term.keys())[0]].pop("word")
-    term_obj = dict(name=term_name, dictionary=term[term_name], likeCounter=0, dislikeCounter=0)
+    term_obj = dict(name=term_name, dictionary=term[term_name], likes=0, dislikes=0, views=0)
     term_list.append(term_obj)
 
 print("Transform done.")
