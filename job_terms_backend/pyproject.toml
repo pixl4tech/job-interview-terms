@@ -26,6 +26,7 @@ regex = "^2022.4.24"
 toml = "^0.10.2"
 typed-ast = "^1.5.3"
 typing-extensions = "^4.2.0"
+uvicorn = "^0.17.6"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
