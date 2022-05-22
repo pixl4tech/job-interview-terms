@@ -41,3 +41,13 @@ class Term(BaseModel):
 
     class Config:
         arbitrary_types_allowed = True
+
+
+class TermBase(BaseModel):
+    name: str
+    likes: int
+    dislikes: int
+    views: int
+
+    class Config:
+        arbitrary_types_allowed = True

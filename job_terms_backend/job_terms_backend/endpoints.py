@@ -2,7 +2,7 @@ import os
 from fastapi import FastAPI, APIRouter, HTTPException, status
 from typing import List
 import motor.motor_asyncio
-from job_terms_backend.models import Term
+from job_terms_backend.models import Term, TermBase
 
 term_router = APIRouter(tags=["Term"], prefix="/terms")
 client = motor.motor_asyncio.AsyncIOMotorClient("mongodb://localhost:27017/")
@@ -10,10 +10,10 @@ db = client.jobTerm
 
 
 @term_router.get(
-    "/", response_description="List all terms", response_model=List[Term]
+    "/", response_description="List all terms", response_model=List[TermBase]
 )
 async def list_terms():
-    terms = await db["term"].find().to_list()
+    terms = await db["term"].find({}).to_list(3000)
     return terms
 
 
